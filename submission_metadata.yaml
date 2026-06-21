@@ -1,0 +1,52 @@
+team_name: "kousik-singha"
+
+primary_contact:
+  name: "Kousik Singha"
+  email: "YOUR_EMAIL@gmail.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "Kousik Singha"
+    email: "YOUR_EMAIL@gmail.com"
+    role: "Solo Developer"
+
+github_repo: "https://github.com/singhakousik363-del/redrob-ranker"
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+
+reproduce_command: "python3 rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+compute:
+  platform: "MacBook Air M2"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11.9"
+  os: "macOS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true
+  pre_computation_time_minutes: 20
+
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude for architecture discussion and code review.
+  All scoring logic, weights, and honeypot detection designed by me.
+  No candidate data fed to any LLM during ranking.
+
+methodology_summary: |
+  Two-phase ranking system. Offline: BGE-small-en-v1.5 embeddings 
+  pre-computed for all 100K candidates and JD. Online: multi-signal 
+  scoring combining semantic similarity (30%), title relevance (20%), 
+  career evidence (15%), skills with trust multiplier (12%), experience 
+  (10%), location (5%), education (3%), GitHub activity (5%). 
+  Behavioral multiplier applied based on platform signals. 
+  22K+ honeypots detected via internal consistency checks.
+  Runtime: ~3 min CPU-only, no network.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
